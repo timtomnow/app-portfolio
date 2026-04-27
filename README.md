@@ -35,6 +35,22 @@ The admin UI is **not included in production builds** — only the read-only pub
 3. Optionally run `npm run gen:assets -- --config tools/asset-gen/configs/<slug>.json` to auto-generate screenshots and a demo video.
 4. Commit and push to `main` — GitHub Actions builds and deploys automatically.
 
+## Asset folder structure
+
+Each app's assets live under `public/assets/<slug>/` and follow this layout:
+
+```
+public/assets/<slug>/
+  icon.png or icon.svg      # Square icon, minimum 256×256
+  screenshots/
+    01-<description>.png
+    02-<description>.png
+    ...
+  demo.mp4                  # Demo video, max 60 seconds
+```
+
+The `device` field (`desktop` or `mobile`) is stored in `apps.json`, not in the filename. Assets can be added manually by dropping files into the correct folder, or generated automatically with `npm run gen:assets`.
+
 ## License
 
 MIT © timtomnow
