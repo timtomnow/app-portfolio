@@ -1,0 +1,27 @@
+{
+  "apps": [
+    {
+      "slug": "task-tracker",
+      "name": "Task Tracker",
+      "description": "A clean, minimal task management app with drag-and-drop reordering, priority labels, and persistent local storage. Built to stay out of the way.",
+      "complexity": 2,
+      "liveUrl": "https://timtomnow.github.io/task-tracker/",
+      "repoUrl": "https://github.com/timtomnow/task-tracker",
+      "iconPath": "/assets/task-tracker/icon.svg",
+      "screenshots": [],
+      "createdAt": "2026-01-15",
+      "updatedAt": "2026-04-20"
+    },
+    {
+      "slug": "weather-dashboard",
+      "name": "Weather Dashboard",
+      "description": "A responsive weather dashboard showing current conditions, hourly forecasts, and 7-day outlooks for any searched location. Powered by the Open-Meteo API.",
+      "complexity": 3,
+      "repoUrl": "https://github.com/timtomnow/weather-dashboard",
+      "iconPath": "/assets/weather-dashboard/icon.svg",
+      "screenshots": [],
+      "createdAt": "2026-02-10",
+      "updatedAt": "2026-04-25"
+    }
+  ]
+}
