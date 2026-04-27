@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { isAdmin } from '../admin/useIsAdmin'
 
 export default function Header() {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -19,6 +20,11 @@ export default function Header() {
           <NavLink to="/about" className={linkClass}>
             About
           </NavLink>
+          {isAdmin && (
+            <NavLink to="/admin" className={linkClass}>
+              Admin
+            </NavLink>
+          )}
         </nav>
       </div>
     </header>
