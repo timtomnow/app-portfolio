@@ -1,0 +1,13 @@
+{
+  "slug": "example",
+  "url": "https://example.com",
+  "device": "desktop",
+  "screenshots": [
+    { "name": "01-home", "action": null },
+    { "name": "02-scroll", "action": "scroll:200" }
+  ],
+  "video": {
+    "durationSec": 5,
+    "script": ["wait:1000", "scroll:200", "wait:1000", "scroll:0", "wait:1000"]
+  }
+}

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import type { ChangeEvent, ReactNode } from 'react'
-import { X, Upload, CheckCircle2, ArrowLeft } from 'lucide-react'
+import { X, Upload, CheckCircle2, ArrowLeft, Wand2 } from 'lucide-react'
 import type { AppEntry, DeviceType, Screenshot } from '../types'
 import { saveApp } from './saveApps'
 import { assetPaths, screenshotFilename } from './assetPaths'
@@ -74,6 +74,10 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
   const [saved, setSaved] = useState<AppEntry | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  const [generating, setGenerating] = useState(false)
+  const [genStatus, setGenStatus] = useState<'idle' | 'done' | 'error'>('idle')
+  const [genError, setGenError] = useState<string | null>(null)
+
   const iconRef = useRef<HTMLInputElement>(null)
   const shotsRef = useRef<HTMLInputElement>(null)
   const videoRef = useRef<HTMLInputElement>(null)
@@ -103,6 +107,32 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
 
   function updateShotCaption(i: number, caption: string) {
     setPendingShots(prev => prev.map((s, idx) => (idx === i ? { ...s, caption } : s)))
+  }
+
+  async function handleGenerate() {
+    if (!slug.trim()) {
+      setGenError('Set a slug before generating assets.')
+      setGenStatus('error')
+      return
+    }
+    setGenerating(true)
+    setGenStatus('idle')
+    setGenError(null)
+    try {
+      const res = await fetch('/api/admin/gen-assets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+      const json = await res.json() as { ok: boolean; error?: string }
+      if (!json.ok) throw new Error(json.error ?? 'Generation failed.')
+      setGenStatus('done')
+    } catch (e) {
+      setGenError(e instanceof Error ? e.message : 'Generation failed.')
+      setGenStatus('error')
+    } finally {
+      setGenerating(false)
+    }
   }
 
   async function handleSubmit() {
@@ -475,6 +505,34 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
             className="hidden"
             onChange={e => setPendingVideo(e.target.files?.[0] ?? null)}
           />
+        </div>
+
+        {/* Auto-generate assets */}
+        <SectionHeading>Auto-generate Assets</SectionHeading>
+
+        <div className="flex flex-col gap-2">
+          <p className="text-xs text-slate-400">
+            Requires <code className="font-mono">tools/asset-gen/configs/{slug || '&lt;slug&gt;'}.json</code> to exist. Runs the Playwright CLI on the dev server.
+          </p>
+          <div className="flex items-center gap-3 flex-wrap">
+            <button
+              type="button"
+              onClick={handleGenerate}
+              disabled={generating}
+              className="inline-flex items-center gap-2 text-sm text-slate-600 border border-slate-200 rounded-lg px-4 py-2 hover:border-accent-400 disabled:opacity-50 transition-colors"
+            >
+              <Wand2 size={15} />
+              {generating ? 'Generating…' : 'Generate assets'}
+            </button>
+            {genStatus === 'done' && (
+              <span className="text-sm text-green-600 flex items-center gap-1">
+                <CheckCircle2 size={14} /> Done — hot reload will show new assets.
+              </span>
+            )}
+          </div>
+          {genStatus === 'error' && genError && (
+            <p className="text-sm text-red-600 bg-red-50 rounded-lg px-4 py-3">{genError}</p>
+          )}
         </div>
 
         {/* Error */}

@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { spawn } from 'node:child_process'
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url))
 
@@ -75,6 +76,34 @@ function adminApiPlugin(): Plugin {
           const data = JSON.parse(fs.readFileSync(appsPath, 'utf-8')) as { apps: { slug: string }[] }
           data.apps = data.apps.filter(a => a.slug !== slug)
           fs.writeFileSync(appsPath, JSON.stringify(data, null, 2) + '\n')
+          res.end(JSON.stringify({ ok: true }))
+        } catch (e) {
+          res.statusCode = 500
+          res.end(JSON.stringify({ ok: false, error: String(e) }))
+        }
+      })
+
+      server.middlewares.use('/api/admin/gen-assets', async (req, res) => {
+        if (req.method !== 'POST') { res.statusCode = 405; res.end(); return }
+        res.setHeader('Content-Type', 'application/json')
+        try {
+          const { slug } = JSON.parse(await readBody(req)) as { slug: string }
+          const configPath = path.join(ROOT, 'tools/asset-gen/configs', `${slug}.json`)
+          if (!fs.existsSync(configPath)) {
+            res.statusCode = 404
+            res.end(JSON.stringify({ ok: false, error: `No config found at tools/asset-gen/configs/${slug}.json` }))
+            return
+          }
+          await new Promise<void>((resolve, reject) => {
+            const proc = spawn('npx', ['tsx', 'tools/asset-gen/index.ts', '--config', configPath], {
+              cwd: ROOT,
+              stdio: 'pipe',
+            })
+            let errOut = ''
+            proc.stderr?.on('data', d => { errOut += String(d) })
+            proc.on('close', code => (code === 0 ? resolve() : reject(new Error(errOut || `exit ${code}`))))
+            proc.on('error', reject)
+          })
           res.end(JSON.stringify({ ok: true }))
         } catch (e) {
           res.statusCode = 500
