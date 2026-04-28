@@ -6,16 +6,20 @@ import About from './pages/About'
 import AppDetail from './pages/AppDetail'
 import { isAdmin } from './admin/useIsAdmin'
 
-// When isAdmin is false (every production build), this ternary evaluates to null
-// at build time and Rollup eliminates the dynamic import entirely from the bundle.
 const AdminPage = isAdmin ? lazy(() => import('./pages/Admin')) : null
 
 export default function App() {
   return (
     <HashRouter>
+      <a
+        href="#main-content"
+        className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-white focus-visible:text-accent-700 focus-visible:font-medium focus-visible:px-4 focus-visible:py-2 focus-visible:rounded-lg focus-visible:shadow-md"
+      >
+        Skip to main content
+      </a>
       <div className="min-h-screen bg-slate-50 flex flex-col">
         <Header />
-        <main className="flex-1">
+        <main id="main-content" className="flex-1">
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/about" element={<About />} />

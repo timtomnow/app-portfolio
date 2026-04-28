@@ -16,6 +16,9 @@ export default function AppCard({ app }: Props) {
         <img
           src={assetUrl(app.iconPath)}
           alt={`${app.name} icon`}
+          width={56}
+          height={56}
+          loading="lazy"
           className="w-14 h-14 rounded-xl object-cover shrink-0 bg-slate-100"
         />
         <div className="flex-1 min-w-0">

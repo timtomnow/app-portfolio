@@ -2,7 +2,7 @@ type Props = { value: 1 | 2 | 3 | 4 | 5; label?: boolean }
 
 export default function ComplexityDots({ value, label = false }: Props) {
   return (
-    <div className="flex items-center gap-2" title={`Complexity: ${value} / 5`}>
+    <div className="flex items-center gap-2" role="img" aria-label={`Complexity: ${value} of 5`}>
       <div className="flex gap-1">
         {Array.from({ length: 5 }, (_, i) => (
           <span

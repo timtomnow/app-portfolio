@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { loadApps } from '../data/loadApps'
 import ComplexityDots from '../components/ComplexityDots'
 import { assetUrl } from '../utils'
@@ -9,9 +9,36 @@ const apps = loadApps()
 
 export default function AppDetail() {
   const { slug } = useParams<{ slug: string }>()
-  const [lightbox, setLightbox] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const lastIndexRef = useRef<number | null>(null)
 
   const app = apps.find(a => a.slug === slug)
+  const shotCount = app?.screenshots.length ?? 0
+
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      lastIndexRef.current = lightboxIndex
+      closeBtnRef.current?.focus()
+    } else if (lastIndexRef.current !== null) {
+      triggerRefs.current[lastIndexRef.current]?.focus()
+    }
+  }, [lightboxIndex])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null)
+      if (e.key === 'ArrowRight')
+        setLightboxIndex(i => (i !== null && i < shotCount - 1 ? i + 1 : i))
+      if (e.key === 'ArrowLeft')
+        setLightboxIndex(i => (i !== null && i > 0 ? i - 1 : i))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightboxIndex, shotCount])
+
   if (!app) return <Navigate to="/" replace />
 
   return (
@@ -29,6 +56,8 @@ export default function AppDetail() {
         <img
           src={assetUrl(app.iconPath)}
           alt={`${app.name} icon`}
+          width={80}
+          height={80}
           className="w-20 h-20 rounded-2xl object-cover shrink-0 bg-slate-100 shadow-sm"
         />
         <div className="flex-1 min-w-0">
@@ -68,7 +97,7 @@ export default function AppDetail() {
 
       {/* Screenshots */}
       {app.screenshots.length > 0 && (
-        <section className="mb-12">
+        <section aria-label="Screenshots" className="mb-12">
           <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">
             Screenshots
           </h2>
@@ -76,12 +105,15 @@ export default function AppDetail() {
             {app.screenshots.map((shot, i) => (
               <button
                 key={i}
-                onClick={() => setLightbox(assetUrl(shot.path))}
+                ref={(el: HTMLButtonElement | null) => { triggerRefs.current[i] = el }}
+                onClick={() => setLightboxIndex(i)}
+                aria-label={`View screenshot ${i + 1}${shot.caption ? `: ${shot.caption}` : ''} full size`}
                 className="group rounded-xl overflow-hidden border border-slate-200 hover:border-accent-400 transition-colors text-left w-full"
               >
                 <img
                   src={assetUrl(shot.path)}
-                  alt={shot.caption ?? `Screenshot ${i + 1}`}
+                  alt={shot.caption ?? `Screenshot ${i + 1} of ${app.screenshots.length}`}
+                  loading="lazy"
                   className="w-full object-cover group-hover:opacity-90 transition-opacity"
                 />
                 {shot.caption && (
@@ -95,32 +127,63 @@ export default function AppDetail() {
 
       {/* Demo video */}
       {app.demoVideo && (
-        <section className="mb-12">
+        <section aria-label="Demo video" className="mb-12">
           <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">
             Demo
           </h2>
           <video
             src={assetUrl(app.demoVideo.path)}
             controls
-            className="w-full rounded-xl border border-slate-200"
+            aria-label={`${app.name} demo video`}
+            className="w-full max-h-[520px] rounded-xl border border-slate-200 bg-slate-900"
           />
         </section>
       )}
 
       {/* Lightbox */}
-      {lightbox && (
+      {lightboxIndex !== null && (
         <div
           role="dialog"
           aria-modal="true"
+          aria-label={`Screenshot ${lightboxIndex + 1} of ${app.screenshots.length}`}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setLightbox(null)}
+          onClick={() => setLightboxIndex(null)}
         >
+          <button
+            ref={closeBtnRef}
+            onClick={() => setLightboxIndex(null)}
+            aria-label="Close lightbox"
+            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-1.5 rounded"
+          >
+            <X size={22} />
+          </button>
+
+          {lightboxIndex > 0 && (
+            <button
+              onClick={e => { e.stopPropagation(); setLightboxIndex(i => (i !== null && i > 0 ? i - 1 : i)) }}
+              aria-label="Previous screenshot"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 rounded"
+            >
+              <ChevronLeft size={28} />
+            </button>
+          )}
+
           <img
-            src={lightbox}
-            alt="Screenshot enlarged"
+            src={assetUrl(app.screenshots[lightboxIndex].path)}
+            alt={app.screenshots[lightboxIndex].caption ?? `Screenshot ${lightboxIndex + 1} of ${app.screenshots.length}`}
             className="max-w-full max-h-full rounded-xl object-contain"
             onClick={e => e.stopPropagation()}
           />
+
+          {lightboxIndex < app.screenshots.length - 1 && (
+            <button
+              onClick={e => { e.stopPropagation(); setLightboxIndex(i => (i !== null && i < shotCount - 1 ? i + 1 : i)) }}
+              aria-label="Next screenshot"
+              className="absolute right-16 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-2 rounded"
+            >
+              <ChevronRight size={28} />
+            </button>
+          )}
         </div>
       )}
     </div>
