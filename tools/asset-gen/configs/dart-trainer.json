@@ -1,0 +1,26 @@
+{
+  "slug": "dart-trainer",
+  "url": "https://timtomnow.github.io/dart-trainer/",
+  "device": "mobile",
+  "screenshots": [
+    { "name": "01-home",     "action": "wait:2000" },
+    { "name": "02-game-menu", "action": "scroll:120" },
+    { "name": "04-stats",    "action": "click:a[href*=\"stats\"]" },
+    { "name": "05-history",  "action": "click:a[href*=\"history\"]" },
+    { "name": "06-settings", "action": "click:a[href*=\"settings\"]" }
+  ],
+  "video": {
+    "durationSec": 20,
+    "script": [
+      "wait:2000",
+      "scroll:120",
+      "wait:800",
+      "click:a[href*=\"stats\"]",
+      "wait:2000",
+      "click:a[href*=\"history\"]",
+      "wait:2000",
+      "click:a[href*=\"settings\"]",
+      "wait:3000"
+    ]
+  }
+}

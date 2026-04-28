@@ -1,0 +1,35 @@
+{
+  "slug": "heic-converter",
+  "url": "https://timtomnow.github.io/heic-converter/",
+  "device": "desktop",
+  "screenshots": [
+    { "name": "01-convert-page",      "action": "wait:1500" },
+    { "name": "02-format-quality",    "action": "scroll:200" },
+    { "name": "03-naming-options",    "action": "scroll:400" },
+    { "name": "04-metadata-naming",   "action": "evaluate:setNamingMode('metadata')" },
+    { "name": "05-metadata-inspector","action": "click:[data-page=\"metadata\"]" },
+    { "name": "06-help-modal",        "action": "evaluate:showHelpModal()" }
+  ],
+  "video": {
+    "durationSec": 20,
+    "script": [
+      "wait:1500",
+      "scroll:200",
+      "wait:1000",
+      "scroll:400",
+      "wait:1000",
+      "evaluate:setNamingMode('metadata')",
+      "wait:1500",
+      "scroll:0",
+      "wait:500",
+      "click:[data-page=\"metadata\"]",
+      "wait:2000",
+      "click:[data-page=\"converter\"]",
+      "wait:800",
+      "evaluate:showHelpModal()",
+      "wait:3000",
+      "evaluate:hideModal()",
+      "wait:1000"
+    ]
+  }
+}

@@ -65,6 +65,68 @@
         "path": "/assets/bluejays-score/demo.mp4",
         "device": "mobile"
       }
+    },
+    {
+      "slug": "dart-trainer",
+      "name": "Dart Trainer",
+      "description": "A local-first darts training app with X01, Cricket, and Round the World game modes. Play against a computer opponent, track your statistics, and review game history — all stored on-device with no accounts required.",
+      "complexity": 4,
+      "liveUrl": "https://timtomnow.github.io/dart-trainer/",
+      "repoUrl": "https://github.com/timtomnow/dart-trainer",
+      "iconPath": "/assets/dart-trainer/icon.png",
+      "screenshots": [
+        {
+          "path": "/assets/dart-trainer/screenshots/01-home.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/02-game-menu.png",
+          "device": "mobile"
+        }
+      ],
+      "createdAt": "2026-04-27",
+      "updatedAt": "2026-04-28"
+    },
+    {
+      "slug": "heic-converter",
+      "name": "HEIC Converter",
+      "description": "A browser-based HEIC/HEIF to JPEG or PNG converter that processes files locally with no server uploads. Supports bulk drag-and-drop, JPEG quality control, and custom naming from EXIF metadata tokens.",
+      "complexity": 3,
+      "liveUrl": "https://timtomnow.github.io/heic-converter/",
+      "repoUrl": "https://github.com/timtomnow/heic-converter",
+      "iconPath": "/assets/heic-converter/icon.png",
+      "screenshots": [
+        {
+          "path": "/assets/heic-converter/screenshots/01-convert-page.png",
+          "device": "desktop"
+        },
+        {
+          "path": "/assets/heic-converter/screenshots/02-format-quality.png",
+          "device": "desktop"
+        },
+        {
+          "path": "/assets/heic-converter/screenshots/03-naming-options.png",
+          "device": "desktop"
+        },
+        {
+          "path": "/assets/heic-converter/screenshots/04-metadata-naming.png",
+          "device": "desktop"
+        },
+        {
+          "path": "/assets/heic-converter/screenshots/05-metadata-inspector.png",
+          "device": "desktop"
+        },
+        {
+          "path": "/assets/heic-converter/screenshots/06-help-modal.png",
+          "device": "desktop"
+        }
+      ],
+      "demoVideo": {
+        "path": "/assets/heic-converter/demo.mp4",
+        "device": "desktop"
+      },
+      "createdAt": "2026-04-27",
+      "updatedAt": "2026-04-28"
     }
   ]
 }
