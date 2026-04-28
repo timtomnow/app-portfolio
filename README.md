@@ -32,7 +32,7 @@ The admin UI is **not included in production builds** — only the read-only pub
 
 1. Run `npm run dev` locally with `VITE_ADMIN_MODE=true`.
 2. Use the Admin panel to add, edit, or remove apps. Changes write to `src/data/apps.json` and copy assets into `public/assets/<slug>/`.
-3. Optionally run `npm run gen:assets -- --config tools/asset-gen/configs/<slug>.json` to auto-generate screenshots and a demo video.
+3. Optionally run `npm run gen:assets -- --config tools/asset-gen/configs/<slug>.json` to auto-generate screenshots and a demo video. Videos are saved as `.mp4` if `ffmpeg` is installed (`brew install ffmpeg`), otherwise as `.webm`.
 4. Commit and push to `main` — GitHub Actions builds and deploys automatically.
 
 ## Asset folder structure
