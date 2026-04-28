@@ -30,6 +30,8 @@ async function runAction(page: import('playwright').Page, action: Action) {
   } else if (type === 'scroll') {
     await page.evaluate((y: number) => window.scrollTo({ top: y, behavior: 'smooth' }), Number(rest[0]))
     await page.waitForTimeout(400)
+  } else if (type === 'evaluate') {
+    await page.evaluate(rest.join(':'))
   }
 }
 

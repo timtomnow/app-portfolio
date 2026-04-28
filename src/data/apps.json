@@ -1,27 +1,70 @@
 {
   "apps": [
     {
-      "slug": "task-tracker",
-      "name": "Task Tracker",
-      "description": "A clean, minimal task management app with drag-and-drop reordering, priority labels, and persistent local storage. Built to stay out of the way.",
+      "slug": "oilers-score",
+      "name": "oilers-score",
+      "description": "Follow the Edmonton Oilers with this app running off a public NHL stats API. Slightly more complex than the bluejays-score as the MLB API can be accessed directly where this runs a worker on CloudFlare to call the API. Can be installed to mobile Home Screen from the site.",
       "complexity": 2,
-      "liveUrl": "https://timtomnow.github.io/task-tracker/",
-      "repoUrl": "https://github.com/timtomnow/task-tracker",
-      "iconPath": "/assets/task-tracker/icon.svg",
-      "screenshots": [],
-      "createdAt": "2026-01-15",
-      "updatedAt": "2026-04-20"
+      "liveUrl": "https://timtomnow.github.io/oilers-score/",
+      "repoUrl": "https://github.com/timtomnow/oilers-score",
+      "iconPath": "/assets/oilers-score/icon.svg",
+      "screenshots": [
+        {
+          "path": "/assets/oilers-score/screenshots/01-home.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/oilers-score/screenshots/02-scroll.png",
+          "device": "mobile"
+        }
+      ],
+      "demoVideo": {
+        "path": "/assets/oilers-score/demo.mp4",
+        "device": "mobile"
+      },
+      "createdAt": "2026-04-28",
+      "updatedAt": "2026-04-28"
     },
     {
-      "slug": "weather-dashboard",
-      "name": "Weather Dashboard",
-      "description": "A responsive weather dashboard showing current conditions, hourly forecasts, and 7-day outlooks for any searched location. Powered by the Open-Meteo API.",
-      "complexity": 3,
-      "repoUrl": "https://github.com/timtomnow/weather-dashboard",
-      "iconPath": "/assets/weather-dashboard/icon.svg",
-      "screenshots": [],
-      "createdAt": "2026-02-10",
-      "updatedAt": "2026-04-25"
+      "slug": "bluejays-score",
+      "name": "bluejays-score",
+      "description": "Lightweight Javascript and HTML app running a single-page application to follow the Toronto Blue Jays. Uses the publicly available MLB Stats API. Can be installed to mobile Home Screen from the site.",
+      "complexity": 1,
+      "liveUrl": "https://timtomnow.github.io/bluejays-score/",
+      "repoUrl": "https://github.com/timtomnow/bluejays-score",
+      "iconPath": "/assets/bluejays-score/icon.svg",
+      "screenshots": [
+        {
+          "path": "/assets/bluejays-score/screenshots/01-home.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/bluejays-score/screenshots/02-game-section.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/bluejays-score/screenshots/03-play-by-play.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/bluejays-score/screenshots/04-pbp-content.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/bluejays-score/screenshots/05-back-to-main.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/bluejays-score/screenshots/06-player-stats.png",
+          "device": "mobile"
+        }
+      ],
+      "createdAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "demoVideo": {
+        "path": "/assets/bluejays-score/demo.mp4",
+        "device": "mobile"
+      }
     }
   ]
 }

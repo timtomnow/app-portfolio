@@ -1,0 +1,33 @@
+{
+  "slug": "oilers-score",
+  "url": "https://timtomnow.github.io/oilers-score/",
+  "device": "mobile",
+  "screenshots": [
+    { "name": "01-home",             "action": "wait:2500" },
+    { "name": "02-game-section",     "action": "scroll:350" },
+    { "name": "03-play-by-play",     "action": "click:text=Play-by-Play" },
+    { "name": "04-pbp-content",      "action": "wait:1000" },
+    { "name": "05-close-overlay",    "action": "evaluate:closeOverlay()" },
+    { "name": "06-player-stats",     "action": "click:text=Player Stats" }
+  ],
+  "video": {
+    "durationSec": 20,
+    "script": [
+      "wait:2500",
+      "scroll:350",
+      "wait:1000",
+      "click:text=Play-by-Play",
+      "wait:2000",
+      "scroll:700",
+      "wait:1500",
+      "evaluate:closeOverlay()",
+      "wait:500",
+      "click:text=Player Stats",
+      "wait:2500",
+      "evaluate:closeOverlay()",
+      "wait:500",
+      "scroll:1400",
+      "wait:3000"
+    ]
+  }
+}

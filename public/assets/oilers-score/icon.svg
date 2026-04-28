@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect x="0" y="0" width="512" height="512" rx="80" fill="#00205B"/>
+
+  <!-- Orange outer ring -->
+  <circle cx="256" cy="230" r="168" fill="none" stroke="#FF4C00" stroke-width="18"/>
+
+  <!-- Orange filled circle (puck base) -->
+  <circle cx="256" cy="230" r="148" fill="#FF4C00"/>
+
+  <!-- White inner ring -->
+  <circle cx="256" cy="230" r="130" fill="none" stroke="white" stroke-width="8"/>
+
+  <!-- Navy circle center -->
+  <circle cx="256" cy="230" r="118" fill="#00205B"/>
+
+  <!-- Oil derrick / drill tower -->
+  <!-- Main tower legs -->
+  <line x1="256" y1="130" x2="206" y2="280" stroke="#FF4C00" stroke-width="10" stroke-linecap="round"/>
+  <line x1="256" y1="130" x2="306" y2="280" stroke="#FF4C00" stroke-width="10" stroke-linecap="round"/>
+  <!-- Cross braces -->
+  <line x1="218" y1="190" x2="294" y2="190" stroke="#FF4C00" stroke-width="7" stroke-linecap="round"/>
+  <line x1="230" y1="235" x2="282" y2="235" stroke="#FF4C00" stroke-width="7" stroke-linecap="round"/>
+  <!-- Diagonal braces -->
+  <line x1="218" y1="190" x2="282" y2="235" stroke="#FF4C00" stroke-width="5" stroke-linecap="round"/>
+  <line x1="294" y1="190" x2="230" y2="235" stroke="#FF4C00" stroke-width="5" stroke-linecap="round"/>
+  <!-- Base platform -->
+  <rect x="194" y="276" width="124" height="10" rx="4" fill="#FF4C00"/>
+  <!-- Top peak cap -->
+  <polygon points="256,122 245,140 267,140" fill="white"/>
+  <!-- Drill pipe going down -->
+  <rect x="250" y="140" width="12" height="136" rx="4" fill="white" opacity="0.3"/>
+
+  <!-- Oil drop at base -->
+  <path d="M256 295 Q234 315 234 330 Q234 350 256 350 Q278 350 278 330 Q278 315 256 295Z" fill="#FF4C00"/>
+
+  <!-- OILERS text -->
+  <text x="256" y="390" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="46" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">OILERS</text>
+
+  <!-- EDM small text -->
+  <text x="256" y="432" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="26" font-weight="700" fill="#FF4C00" text-anchor="middle" letter-spacing="6">EDMONTON</text>
+</svg>
