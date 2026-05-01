@@ -23,7 +23,7 @@
         "device": "mobile"
       },
       "createdAt": "2026-04-28",
-      "updatedAt": "2026-04-28"
+      "updatedAt": "2026-05-01"
     },
     {
       "slug": "bluejays-score",
@@ -80,12 +80,52 @@
           "device": "mobile"
         },
         {
-          "path": "/assets/dart-trainer/screenshots/02-game-menu.png",
+          "path": "/assets/dart-trainer/screenshots/02-501-clock.png",
+          "caption": "501-clock",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/03-grid-layout.png",
+          "caption": "grid-layout",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/04-cricket.png",
+          "caption": "cricket",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/05-hit-miss.png",
+          "caption": "hit-miss",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/06-checkout-practice.png",
+          "caption": "checkout-practice",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/07-checkout.png",
+          "caption": "checkout",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/08-hit-miss-light.png",
+          "caption": "hit-miss-light",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/dart-trainer/screenshots/09-rtw.png",
+          "caption": "rtw",
           "device": "mobile"
         }
       ],
+      "demoVideo": {
+        "path": "/assets/dart-trainer/demo.mp4",
+        "device": "mobile"
+      },
       "createdAt": "2026-04-27",
-      "updatedAt": "2026-04-28"
+      "updatedAt": "2026-05-01"
     },
     {
       "slug": "heic-converter",
