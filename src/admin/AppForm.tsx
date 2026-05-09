@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react'
 import type { ChangeEvent, ReactNode } from 'react'
 import { X, Upload, CheckCircle2, ArrowLeft, Wand2 } from 'lucide-react'
-import type { AppEntry, DeviceType, Screenshot } from '../types'
+import type { AppEntry, DeviceType, Screenshot, Section } from '../types'
 import { saveApp } from './saveApps'
 import { assetPaths, screenshotFilename } from './assetPaths'
 import { assetUrl } from '../utils'
 
 type Props = {
   initial?: AppEntry
+  sections: Section[]
   onSaved: (app: AppEntry) => void
   onCancel: () => void
 }
@@ -51,7 +52,7 @@ function SectionHeading({ children }: { children: ReactNode }) {
   )
 }
 
-export default function AppForm({ initial, onSaved, onCancel }: Props) {
+export default function AppForm({ initial, sections, onSaved, onCancel }: Props) {
   const isNew = !initial
 
   const [name, setName] = useState(initial?.name ?? '')
@@ -61,6 +62,7 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
   const [device, setDevice] = useState<DeviceType>(
     initial?.screenshots[0]?.device ?? initial?.demoVideo?.device ?? 'desktop',
   )
+  const [sectionId, setSectionId] = useState(initial?.sectionId ?? '')
   const [liveUrl, setLiveUrl] = useState(initial?.liveUrl ?? '')
   const [repoUrl, setRepoUrl] = useState(initial?.repoUrl ?? '')
 
@@ -184,6 +186,7 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
         complexity,
         liveUrl: liveUrl.trim() || undefined,
         repoUrl: repoUrl.trim() || undefined,
+        sectionId: sectionId || undefined,
         iconPath,
         screenshots: [...existingShots, ...newShotUploads.map(u => u.entry)],
         demoVideo,
@@ -280,6 +283,21 @@ export default function AppForm({ initial, onSaved, onCancel }: Props) {
             placeholder="my-app"
           />
         </Field>
+
+        {sections.length > 0 && (
+          <Field label="Section" hint="Groups this app on the public portfolio page.">
+            <select
+              value={sectionId}
+              onChange={e => setSectionId(e.target.value)}
+              className={inputCls}
+            >
+              <option value="">— None (General) —</option>
+              {sections.map(s => (
+                <option key={s.id} value={s.id}>{s.label}</option>
+              ))}
+            </select>
+          </Field>
+        )}
 
         <Field label="Description" required>
           <textarea

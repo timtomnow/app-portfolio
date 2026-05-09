@@ -83,6 +83,35 @@ function adminApiPlugin(): Plugin {
         }
       })
 
+      server.middlewares.use('/api/admin/save-sections', async (req, res) => {
+        if (req.method !== 'POST') { res.statusCode = 405; res.end(); return }
+        res.setHeader('Content-Type', 'application/json')
+        try {
+          const { sections, deletedId } = JSON.parse(await readBody(req)) as {
+            sections: { id: string; label: string; order: number }[]
+            deletedId?: string
+          }
+          const appsPath = path.join(ROOT, 'src/data/apps.json')
+          const data = JSON.parse(fs.readFileSync(appsPath, 'utf-8')) as {
+            apps: ({ slug: string; sectionId?: string } & Record<string, unknown>)[]
+            sections: unknown[]
+          }
+          data.sections = sections
+          if (deletedId) {
+            data.apps = data.apps.map(a => {
+              if (a.sectionId !== deletedId) return a
+              const { sectionId: _, ...rest } = a
+              return rest
+            })
+          }
+          fs.writeFileSync(appsPath, JSON.stringify(data, null, 2) + '\n')
+          res.end(JSON.stringify({ ok: true }))
+        } catch (e) {
+          res.statusCode = 500
+          res.end(JSON.stringify({ ok: false, error: String(e) }))
+        }
+      })
+
       server.middlewares.use('/api/admin/gen-assets', async (req, res) => {
         if (req.method !== 'POST') { res.statusCode = 405; res.end(); return }
         res.setHeader('Content-Type', 'application/json')

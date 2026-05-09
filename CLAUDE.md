@@ -37,7 +37,26 @@ tools/
 
 ## Data model
 
-Each app entry in `src/data/apps.json` has this shape (see `src/types.ts` for the canonical definition):
+The top-level shape of `src/data/apps.json`:
+
+```json
+{
+  "sections": [...],
+  "apps": [...]
+}
+```
+
+Each section:
+
+```ts
+{
+  id: string,     // stable slug-like id, e.g. "sports-abc123"
+  label: string,  // display name, e.g. "Sports"
+  order: number   // 0-indexed display order; always equals array index after any mutation
+}
+```
+
+Each app entry (see `src/types.ts` for the canonical definition):
 
 ```ts
 {
@@ -50,6 +69,7 @@ Each app entry in `src/data/apps.json` has this shape (see `src/types.ts` for th
   iconPath: string,       // "/assets/<slug>/icon.png"
   screenshots: { path: string; caption?: string; device: "desktop"|"mobile" }[],
   demoVideo?: { path: string; device: "desktop"|"mobile" },
+  sectionId?: string,     // references Section.id; omitted = appears in General
   createdAt: string,      // ISO date
   updatedAt: string
 }
@@ -62,6 +82,7 @@ Each app entry in `src/data/apps.json` has this shape (see `src/types.ts` for th
 - Vite inlines this at build time — when the env var is absent, the admin branch is dead code and tree-shaken from `dist/`.
 - **Never import admin components from outside `src/admin/` without wrapping in the admin gate.**
 - Saving from the admin UI writes `src/data/apps.json` and copies files into `public/assets/<slug>/` via a Vite dev-server plugin. This plugin only registers in dev mode.
+- The Admin list page has a **Sections** panel for adding, renaming, reordering, and deleting sections. Renaming keeps apps in the section. Deleting clears `sectionId` from affected apps (no app data is lost). The `POST /api/admin/save-sections` endpoint handles all section mutations.
 
 ## Asset conventions
 

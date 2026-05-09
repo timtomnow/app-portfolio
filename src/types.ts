@@ -11,6 +11,12 @@ export type DemoVideo = {
   device: DeviceType
 }
 
+export type Section = {
+  id: string
+  label: string
+  order: number
+}
+
 export type AppEntry = {
   slug: string
   name: string
@@ -21,6 +27,7 @@ export type AppEntry = {
   iconPath: string
   screenshots: Screenshot[]
   demoVideo?: DemoVideo
+  sectionId?: string
   createdAt: string
   updatedAt: string
 }

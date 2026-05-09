@@ -1,4 +1,4 @@
-import type { AppEntry } from '../types'
+import type { AppEntry, Section } from '../types'
 
 type IconUpload = { data: string; ext: 'png' | 'svg' }
 type ScreenshotUpload = { data: string; name: string }
@@ -32,4 +32,13 @@ export async function deleteApp(slug: string): Promise<void> {
     body: JSON.stringify({ slug }),
   })
   if (!res.ok) throw new Error(`Delete failed: ${res.statusText}`)
+}
+
+export async function saveSections(sections: Section[], deletedId?: string): Promise<void> {
+  const res = await fetch('/api/admin/save-sections', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sections, deletedId }),
+  })
+  if (!res.ok) throw new Error(`Save sections failed: ${res.statusText}`)
 }
