@@ -100,8 +100,7 @@ function adminApiPlugin(): Plugin {
           if (deletedId) {
             data.apps = data.apps.map(a => {
               if (a.sectionId !== deletedId) return a
-              const { sectionId: _, ...rest } = a
-              return rest
+              return Object.fromEntries(Object.entries(a).filter(([k]) => k !== 'sectionId')) as typeof a
             })
           }
           fs.writeFileSync(appsPath, JSON.stringify(data, null, 2) + '\n')
