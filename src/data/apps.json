@@ -206,7 +206,7 @@
       "slug": "ttn-plot-my-notes",
       "name": "TTN Plot My Notes",
       "description": "Inspired by frameworks to track how feelings and energy change over time and through scenarios, this app lets you set and track 1d and 2d charts with notes. This can work as an illustrative tool to show how people act in different scenarios, or a personal journalling tool to help you visualize your emotions in a new way. Comes with features to set calendar reminders by creating .ics files, and ways to customize and choose your own axes to track. Local-first with your data being only on your device unless you use the export and import via JSON.",
-      "complexity": 4,
+      "complexity": 3,
       "liveUrl": "https://timtomnow.github.io/plot-my-notes/",
       "repoUrl": "https://github.com/timtomnow/plot-my-notes/",
       "sectionId": "lifestyle-moxvhr3c",
