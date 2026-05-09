@@ -19,7 +19,7 @@
   "apps": [
     {
       "slug": "oilers-score",
-      "name": "oilers-score",
+      "name": "Oilers Score",
       "description": "Follow the Edmonton Oilers with this app running off a public NHL stats API. Slightly more complex than the bluejays-score as the MLB API can be accessed directly where this runs a worker on CloudFlare to call the API. Can be installed to mobile Home Screen from the site.",
       "complexity": 2,
       "liveUrl": "https://timtomnow.github.io/oilers-score/",
@@ -45,7 +45,7 @@
     },
     {
       "slug": "bluejays-score",
-      "name": "bluejays-score",
+      "name": "Bluejays Score",
       "description": "Lightweight Javascript and HTML app running a single-page application to follow the Toronto Blue Jays. Uses the publicly available MLB Stats API. Can be installed to mobile Home Screen from the site.",
       "complexity": 1,
       "liveUrl": "https://timtomnow.github.io/bluejays-score/",
@@ -87,8 +87,8 @@
     },
     {
       "slug": "dart-trainer",
-      "name": "Dart Trainer",
-      "description": "A local-first darts training app with X01, Cricket, and Round the World game modes. Play against a computer opponent, track your statistics, and review game history — all stored on-device with no accounts required.",
+      "name": "TTN Darts Trainer",
+      "description": "A local-first darts training app with multiple game modes including X01, X01 vs Computer, Cricket, Round the World, Round the World Scoring and Checkout Practice game modes. Allows for multiplayer, review of game history and summary statistics across sessions — all stored on-device with no accounts required.",
       "complexity": 4,
       "liveUrl": "https://timtomnow.github.io/dart-trainer/",
       "repoUrl": "https://github.com/timtomnow/dart-trainer",
@@ -187,6 +187,45 @@
         "device": "desktop"
       },
       "createdAt": "2026-04-27",
+      "updatedAt": "2026-05-09"
+    },
+    {
+      "slug": "fintom",
+      "name": "FinTom",
+      "description": "This custom financial planning app works in desktop or mobile to allow users to calculate their current net worth as a 'baseline', add multiple events (recurring and one-time expenses, cash flows, and transfers between accounts), and create multiple analyses. Handles complex items like mortgages with custom calculations, growth rates in accounts, and investment returns tracked by expected return and standard deviation. Optional incorporation of Monte Carlo simulation on investment assets as a part of the analysis. Is local-first, data stays on your device and has ability export & import as JSON if porting or sharing.",
+      "complexity": 4,
+      "liveUrl": "https://timtomnow.github.io/fintom-planning/",
+      "repoUrl": "https://github.com/timtomnow/fintom-planning/",
+      "sectionId": "lifestyle-moxvhr3c",
+      "iconPath": "/assets/fintom/icon.png",
+      "screenshots": [],
+      "createdAt": "2026-05-09",
+      "updatedAt": "2026-05-09"
+    },
+    {
+      "slug": "ttn-plot-my-notes",
+      "name": "TTN Plot My Notes",
+      "description": "Inspired by frameworks to track how feelings and energy change over time and through scenarios, this app lets you set and track 1d and 2d charts with notes. This can work as an illustrative tool to show how people act in different scenarios, or a personal journalling tool to help you visualize your emotions in a new way. Comes with features to set calendar reminders by creating .ics files, and ways to customize and choose your own axes to track. Local-first with your data being only on your device unless you use the export and import via JSON.",
+      "complexity": 4,
+      "liveUrl": "https://timtomnow.github.io/plot-my-notes/",
+      "repoUrl": "https://github.com/timtomnow/plot-my-notes/",
+      "sectionId": "lifestyle-moxvhr3c",
+      "iconPath": "/assets/ttn-plot-my-notes/icon.png",
+      "screenshots": [],
+      "createdAt": "2026-05-09",
+      "updatedAt": "2026-05-09"
+    },
+    {
+      "slug": "ttn-list",
+      "name": "TTN List",
+      "description": "Life runs on lists, so keep your lists organized and efficient! TTN List lets users build Shopping Lists, Chore Lists, and Project Lists that are fast, local-first, and easy to use. Group items together to be able to put together your list today, and check-off your list as you progress through it. Allows users to add photos for different items on lists and add descriptions to make sure you have way more information than you would scribbling on the back of a post-it note. TTN List also lets you use photos and notes at the end of completing a list to save your results, receipts, or just how happy you are that it's done! Your data is only on your device unless you use the import and export JSON feature. Also has a feature to create .ics files so that users can create a calendar reminder for themselves that takes them right to the list they need, when they need it.",
+      "complexity": 4,
+      "liveUrl": "https://timtomnow.github.io/ttn-list/",
+      "repoUrl": "https://github.com/timtomnow/ttn-list/",
+      "sectionId": "lifestyle-moxvhr3c",
+      "iconPath": "/assets/ttn-list/icon.png",
+      "screenshots": [],
+      "createdAt": "2026-05-09",
       "updatedAt": "2026-05-09"
     }
   ]
