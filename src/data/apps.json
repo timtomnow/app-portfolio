@@ -227,6 +227,19 @@
       "screenshots": [],
       "createdAt": "2026-05-09",
       "updatedAt": "2026-05-09"
+    },
+    {
+      "slug": "ttn-portfolio-site",
+      "name": "TTN Portfolio Site",
+      "description": "This site that showcases my other apps is a custom build, how meta is that! This site has some key features that increase its value to me as the developer. It allows in dev for the Admin to complete CRUD functions for displayed apps, including photos, details, and video, and then changes occur when it is committed to the repo. It also allows them to be organized in custom sections in a user-friendly way. On top of that, it does have an 'auto-generate' assets feature, where if there are saved instructions for a given app (like scroll, click on element x, wait), the site itself can generate updated screenshots and video so that I can refresh them later quickly and easily. \n\nViewing is great on both mobile and desktop, the admin functions work best from desktop as they are typically run from dev so that the Admin panel is active.",
+      "complexity": 2,
+      "liveUrl": "https://timtomnow.github.io/app-portfolio/",
+      "repoUrl": "https://github.com/timtomnow/app-portfolio/",
+      "sectionId": "utilities-moxvhx4h",
+      "iconPath": "/assets/ttn-portfolio-site/icon.png",
+      "screenshots": [],
+      "createdAt": "2026-05-10",
+      "updatedAt": "2026-05-10"
     }
   ]
 }
