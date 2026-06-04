@@ -1,0 +1,42 @@
+{
+  "slug": "elks-score",
+  "url": "https://timtomnow.github.io/elks-score/",
+  "device": "mobile",
+  "screenshots": [
+    { "name": "01-home",         "action": "wait:2500" },
+    { "name": "02-game-stats",   "action": "scroll:480" },
+    { "name": "03-standings",    "action": "scroll:1235" },
+    { "name": "04-scoreboard",   "action": "scroll:1700" },
+    { "name": "05-box-score",    "action": "evaluate:(async()=>{window.scrollTo(0,0);document.querySelector('.gs-card').click();await new Promise(r=>setTimeout(r,1500));})()" },
+    { "name": "06-player-stats", "action": "evaluate:(async()=>{switchGameTab('player');await new Promise(r=>setTimeout(r,800));})()" },
+    { "name": "07-help-docs",    "action": "evaluate:(async()=>{closeGameModal();openSettings();showAll();await new Promise(r=>setTimeout(r,1600));})()" }
+  ],
+  "video": {
+    "durationSec": 30,
+    "script": [
+      "wait:2500",
+      "scroll:480",
+      "wait:2000",
+      "scroll:1235",
+      "wait:2000",
+      "scroll:1700",
+      "wait:2000",
+      "scroll:0",
+      "wait:800",
+      "evaluate:document.querySelector('.gs-card').click()",
+      "wait:2200",
+      "evaluate:switchGameTab('player')",
+      "wait:2000",
+      "evaluate:switchGameTab('pbp')",
+      "wait:2000",
+      "evaluate:closeGameModal()",
+      "wait:600",
+      "evaluate:openSettings()",
+      "wait:1800",
+      "evaluate:showAll()",
+      "wait:2500",
+      "evaluate:closeSettings()",
+      "wait:800"
+    ]
+  }
+}

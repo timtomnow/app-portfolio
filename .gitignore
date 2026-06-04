@@ -15,6 +15,7 @@ test-results/
 playwright-report/
 playwright/.cache/
 tools/asset-gen/output/
+.playwright-mcp/
 
 # Logs
 logs/

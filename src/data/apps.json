@@ -18,6 +18,52 @@
   ],
   "apps": [
     {
+      "slug": "elks-score",
+      "name": "Elks Score",
+      "description": "Follow the Edmonton Elks and the rest of the CFL with this single-page Javascript and HTML app — another great addition to our score apps. It surfaces the most relevant Elks game (live, next scheduled, or last final), full team & player box scores with quarter-by-quarter play-by-play, CFL division standings, the weekly scoreboard, recent results, and upcoming games. Like oilers-score it runs a CloudFlare worker to proxy the scoreboard feed, and pulls box scores from a separate CFL Game Tracker feed. A built-in Help guide documents how everything works, you can switch the app to follow any CFL team, and it installs to your mobile Home Screen from the site.",
+      "complexity": 2,
+      "liveUrl": "https://timtomnow.github.io/elks-score/",
+      "repoUrl": "https://github.com/timtomnow/elks-score",
+      "sectionId": "sports-moxvhh96",
+      "iconPath": "/assets/elks-score/icon.svg",
+      "screenshots": [
+        {
+          "path": "/assets/elks-score/screenshots/01-home.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/02-game-stats.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/03-standings.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/04-scoreboard.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/05-box-score.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/06-player-stats.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/elks-score/screenshots/07-help-docs.png",
+          "device": "mobile"
+        }
+      ],
+      "demoVideo": {
+        "path": "/assets/elks-score/demo.mp4",
+        "device": "mobile"
+      },
+      "createdAt": "2026-06-03",
+      "updatedAt": "2026-06-04"
+    },
+    {
       "slug": "oilers-score",
       "name": "Oilers Score",
       "description": "Follow the Edmonton Oilers with this app running off a public NHL stats API. Slightly more complex than the bluejays-score as the MLB API can be accessed directly where this runs a worker on CloudFlare to call the API. Can be installed to mobile Home Screen from the site.",
