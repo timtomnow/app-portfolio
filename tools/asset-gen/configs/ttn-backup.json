@@ -1,0 +1,41 @@
+{
+  "slug": "ttn-backup",
+  "url": "https://timtomnow.github.io/ttn-backup/",
+  "device": "mobile",
+  "screenshots": [
+    { "name": "01-dashboard",        "action": "evaluate:(async()=>{runBackupAll();await new Promise(r=>setTimeout(r,6500));navigate('dashboard');await new Promise(r=>setTimeout(r,700));})()" },
+    { "name": "02-apps",             "action": "evaluate:(async()=>{navigate('apps');await new Promise(r=>setTimeout(r,800));})()" },
+    { "name": "03-history",          "action": "evaluate:(async()=>{navigate('history');await new Promise(r=>setTimeout(r,800));})()" },
+    { "name": "04-bundle-restore",   "action": "evaluate:(async()=>{navigate('history');await new Promise(r=>setTimeout(r,400));[...document.querySelectorAll('#main button')].find(b=>b.textContent.trim()==='Open')?.click();await new Promise(r=>setTimeout(r,700));})()" },
+    { "name": "05-schedule-new",     "action": "evaluate:(async()=>{hideModal();navigate('schedules');await new Promise(r=>setTimeout(r,300));openScheduleModal();await new Promise(r=>setTimeout(r,700));})()" },
+    { "name": "06-settings",         "action": "evaluate:(async()=>{hideModal();navigate('settings');await new Promise(r=>setTimeout(r,700));})()" },
+    { "name": "07-retention",        "action": "evaluate:(async()=>{window.scrollTo(0,400);await new Promise(r=>setTimeout(r,600));})()" }
+  ],
+  "video": {
+    "durationSec": 25,
+    "script": [
+      "evaluate:runBackupAll()",
+      "wait:6500",
+      "evaluate:navigate('dashboard')",
+      "wait:2500",
+      "evaluate:navigate('apps')",
+      "wait:2200",
+      "evaluate:navigate('history')",
+      "wait:1800",
+      "evaluate:[...document.querySelectorAll('#main button')].find(b=>b.textContent.trim()==='Open')?.click()",
+      "wait:2500",
+      "evaluate:hideModal()",
+      "wait:400",
+      "evaluate:navigate('schedules')",
+      "wait:1000",
+      "evaluate:openScheduleModal()",
+      "wait:2500",
+      "evaluate:hideModal()",
+      "wait:400",
+      "evaluate:navigate('settings')",
+      "wait:1800",
+      "scroll:400",
+      "wait:1800"
+    ]
+  }
+}

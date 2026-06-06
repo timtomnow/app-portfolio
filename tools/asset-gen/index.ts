@@ -74,13 +74,19 @@ async function run() {
       console.log(`  saved screenshots/${filename}`)
     }
 
-    // Capture icon from first screenshot: a square crop via a tiny viewport context
-    const iconCtx = await browser.newContext({ viewport: { width: 512, height: 512 } })
-    const iconPage = await iconCtx.newPage()
-    await iconPage.goto(url, { waitUntil: 'networkidle' })
-    await iconPage.screenshot({ path: path.join(assetRoot, 'icon.png') })
-    console.log('  saved icon.png')
-    await iconCtx.close()
+    // Auto-icon: only a crude 512×512 page crop, and only used as a last resort.
+    // Never clobber a real icon that was sourced into the asset folder.
+    const hasIcon = ['icon.png', 'icon.svg'].some(f => fs.existsSync(path.join(assetRoot, f)))
+    if (hasIcon) {
+      console.log('  icon already present — skipping auto-icon')
+    } else {
+      const iconCtx = await browser.newContext({ viewport: { width: 512, height: 512 } })
+      const iconPage = await iconCtx.newPage()
+      await iconPage.goto(url, { waitUntil: 'networkidle' })
+      await iconPage.screenshot({ path: path.join(assetRoot, 'icon.png') })
+      console.log('  saved icon.png (auto-generated fallback)')
+      await iconCtx.close()
+    }
 
     await ctx.close()
   }

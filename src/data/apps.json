@@ -286,6 +286,52 @@
       "screenshots": [],
       "createdAt": "2026-05-10",
       "updatedAt": "2026-05-10"
+    },
+    {
+      "slug": "ttn-backup",
+      "name": "TTN Backup",
+      "description": "A backup utility PWA that guards every app in my timtomnow.github.io suite against the dreaded 'clear site data' wipe. Because all of the apps share one browser origin, a single wipe can erase everything at once — so ttn-backup snapshots each app into one JSON bundle, writes it to durable storage outside the browser, and gives you a one-tap restore back into any app. It works by loading each app in a hidden same-origin iframe and calling that app's own export/import through a tiny adapter, so the app itself stays the source of truth. Rounds it out with backup history and retention limits, .ics calendar reminders for scheduled backups, and a recovery flow that rebuilds its index from previously-saved .json files after a wipe. Local-first and installable to your Home Screen.",
+      "complexity": 3,
+      "liveUrl": "https://timtomnow.github.io/ttn-backup/",
+      "repoUrl": "https://github.com/timtomnow/ttn-backup/",
+      "sectionId": "utilities-moxvhx4h",
+      "iconPath": "/assets/ttn-backup/icon.svg",
+      "screenshots": [
+        {
+          "path": "/assets/ttn-backup/screenshots/01-dashboard.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/02-apps.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/03-history.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/04-bundle-restore.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/05-schedule-new.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/06-settings.png",
+          "device": "mobile"
+        },
+        {
+          "path": "/assets/ttn-backup/screenshots/07-retention.png",
+          "device": "mobile"
+        }
+      ],
+      "demoVideo": {
+        "path": "/assets/ttn-backup/demo.mp4",
+        "device": "mobile"
+      },
+      "createdAt": "2026-06-03",
+      "updatedAt": "2026-06-04"
     }
   ]
 }
